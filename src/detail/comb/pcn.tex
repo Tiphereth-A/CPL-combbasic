@@ -1,0 +1,124 @@
+\begin{frame}[fragile]{排列数}
+	\begin{definition}[排列数]
+		\label{cbasic:def:pnum}
+		从 \(n\) 个不同元素中, 任取 \(m\) (\(m\leq n\), \(m\) 与 \(n\) 均为自然数, 下同) 个元素按照一定的顺序排成一列, 叫做从 \(n\) 个不同元素中取出 \(m\) 个元素的一个排列；从 \(n\) 个不同元素中取出 \(m\)(\(m\leq n\)) 个元素的所有排列的个数, 叫做从 \(n\) 个不同元素中取出 \(m\) 个元素的排列数, 用符号 \(\mathrm A_n^m\) 或 \(n^{\underline{m}}\) 表示
+
+		\begin{equation}
+			\label{cbasic:eq:pnum}
+			n^{\underline{m}} = \frac{n!}{(n - m)!}
+		\end{equation}
+	\end{definition}
+\end{frame}
+
+
+\begin{frame}[fragile]{组合数}
+	\begin{definition}[组合数]
+		\label{cbasic:def:cnum}
+		从 \(n\) 个不同元素中, 任取 \(m\)(\(m\leq n\)) 个元素组成一个集合, 叫做从 \(n\) 个不同元素中取出 \(m\) 个元素的一个组合；从 \(n\) 个不同元素中取出 \(m\)(\(m\leq n\)) 个元素的所有组合的个数, 叫做从 \(n\) 个不同元素中取出 \(m\) 个元素的组合数. 用符号 \(\mathrm C_n^m\) 或 \(\binom{n}{m}\) 来表示
+
+		\begin{equation}
+			\label{cbasic:eq:cnum}
+			\binom{n}{m} = \frac{n^{\underline{m}}}{m!} = \frac{n!}{m!(n - m)!}
+		\end{equation}
+	\end{definition}
+\end{frame}
+
+
+\begin{frame}[allowframebreaks]{性质}
+	\label{cbasic:prop:pcn}
+
+	\begin{enumerate}
+		\item \begin{theorem}[二项式定理]
+			      \label{cbasic:th:newton}
+			      \begin{equation}
+				      \label{cbasic:eq:newton}
+				      (a+b)^n=\sum_{i=0}^n\binom{n}{i}a^{n-i}b^i
+			      \end{equation}
+		      \end{theorem}
+
+		\item \begin{equation}
+			      \label{cbasic:eq:prop1}
+			      \binom{n}{m}=\binom{n}{n-m}
+		      \end{equation}
+
+		      相当于将选出的集合对全集取补集, 故数值不变 (对称性)
+
+		\item \begin{equation}
+			      \label{cbasic:eq:prop2}
+			      \binom{n}{k} = \frac{n}{k}\ \binom{n-1}{k-1}
+		      \end{equation}
+
+		      由定义导出的递推式
+
+		\item \begin{equation}
+			      \label{cbasic:eq:prop3}
+			      \binom{n}{m}=\binom{n-1}{m}+\binom{n-1}{m-1}
+		      \end{equation}
+
+		      组合数的递推式. 我们可以利用这个式子在 $O(n^2)$ 的复杂度下推导组合数
+
+		\item \begin{equation}
+			      \label{cbasic:eq:prop4}
+			      \sum_{i=0}^n\binom{n}{i}=2^n
+		      \end{equation}
+
+		      定理 (\ref{cbasic:th:newton}) 的特殊情况. 取 $a=b=1$ 就得到上式
+
+		\item \begin{equation}
+			      \label{cbasic:eq:prop5}
+			      \sum_{i=0}^n(-1)^i\binom{n}{i}=[n=0]
+		      \end{equation}
+
+		      定理 (\ref{cbasic:th:newton}) 的另一种特殊情况, 可取 $a=1, b=-1$. 式子的特殊情况是取 $n=0$ 时答案为 $1$
+
+		\item \begin{equation}
+			      \label{cbasic:eq:prop6}
+			      \sum_{i=0}^m \binom{n}{i}\binom{m}{m-i} = \binom{m+n}{m}\ \ \ (n \geq m)
+		      \end{equation}
+
+		      拆组合数的式子, 在处理某些数据结构题时会用到
+
+		\item \begin{equation}
+			      \label{cbasic:eq:prop7}
+			      \sum_{i=0}^n\binom{n}{i}^2=\binom{2n}{n}
+		      \end{equation}
+
+		      式 (\ref{cbasic:eq:prop6}) 的特殊情况, 取 $n=m$ 即可
+
+		\item \begin{equation}
+			      \label{cbasic:eq:prop8}
+			      \sum_{i=0}^ni\binom{n}{i}=n2^{n-1}
+		      \end{equation}
+
+		      带权和的一个式子, 通过对式 (\ref{cbasic:eq:prop3}) 对应的多项式函数求导可以得证
+
+		\item \begin{equation}
+			      \label{cbasic:eq:prop9}
+			      \sum_{i=0}^ni^2\binom{n}{i}=n(n+1)2^{n-2}
+		      \end{equation}
+
+		      与上式类似, 可以通过对多项式函数求导证明
+
+		\item \begin{equation}
+			      \label{cbasic:eq:prop10}
+			      \sum_{l=0}^n\binom{l}{k} = \binom{n+1}{k+1}
+		      \end{equation}
+
+		      通过组合分析一一考虑 $S={a_1, a_2, \cdots, a_{n+1}}$ 的 $k+1$ 子集数可以得证, 在恒等式证明中比较常用
+
+		\item \begin{equation}
+			      \label{cbasic:eq:prop11}
+			      \binom{n}{r}\binom{r}{k} = \binom{n}{k}\binom{n-k}{r-k}
+		      \end{equation}
+
+		      通过定义可以证明
+
+		\item \begin{equation}
+			      \label{cbasic:eq:prop12}
+			      \sum_{i=0}^n\binom{n-i}{i}=F_{n+1}
+		      \end{equation}
+
+		      其中 $F_n$ 是 Fibonacci 数列
+	\end{enumerate}
+\end{frame}
+
