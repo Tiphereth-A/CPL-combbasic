@@ -1,8 +1,8 @@
-# LectureTemplate
+# CPL-combbasic
 
-![GitHub](https://img.shields.io/github/license/Tiphereth-A/LectureTemplate)
+![GitHub](https://img.shields.io/github/license/Tiphereth-A/CPL-combbasic)
 
-My template of LaTeX lecture & slice, powered by [metropolis](https://github.com/matze/mtheme)
+My LaTeX lecture & slice about basic combinatorics, powered by [metropolis](https://github.com/matze/mtheme)
 
 ## Usage
 
